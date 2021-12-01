@@ -18,7 +18,7 @@ spec:
         house: bouvier
         machine.openshift.io/cluster-api-cluster: ocp-bnkgh
         machine.openshift.io/cluster-api-machine-role: bouvier-infra
-        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machine-type: infra
         machine.openshift.io/cluster-api-machineset: ocp-bnkgh-bouvier-infra
     spec:
       metadata:
