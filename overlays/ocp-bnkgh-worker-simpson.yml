@@ -1,0 +1,53 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: null
+  labels:
+    machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+  name: ocp-bnkgh-simpson
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+      machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-simpson
+  template:
+    metadata:
+      labels:
+        ingresscontroller: simpson
+        house: simpson
+        machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+        machine.openshift.io/cluster-api-machine-role: simpson-worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-simpson
+    spec:
+      metadata: 
+        creationTimestamp: null
+        labels:
+          node-role.kubernetes.io/simpson-worker: ""
+      taints:
+      - key: node-role.kkubernetes.io/simpson-worker
+        effect: NoSchedule
+      providerSpec:
+        value:
+          cloudInit: null
+          domainMemory: 8192
+          networkInterfaceAddress: 192.168.126.0/24
+          networkUUID: ''
+          uri: 'qemu+tcp://192.168.1.20/system'
+          ignition:
+            userDataSecret: worker-user-data
+          ignKey: ''
+          autostart: false
+          kind: LibvirtMachineProviderConfig
+          domainVcpu: 4
+          networkInterfaceName: ocp-bnkgh
+          volume:
+            baseVolumeID: ocp-bnkgh-base
+            poolName: ocp-bnkgh
+            volumeName: ''
+            volumeSize: 134217728000
+          apiVersion: libvirtproviderconfig.openshift.io/v1beta1
+          networkInterfaceHostname: ''
+

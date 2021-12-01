@@ -1,0 +1,44 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: 'null'
+  labels:
+    machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+  name: ocp-bnkgh-worker-0
+  namespace: openshift-machine-api 
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+      machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-0
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-0
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          cloudInit: null
+          domainMemory: 32768
+          networkInterfaceAddress: 192.168.126.0/24
+          networkUUID: ''
+          uri: 'qemu+tcp://192.168.1.20/system'
+          ignition:
+            userDataSecret: worker-user-data
+          ignKey: ''
+          autostart: false
+          kind: LibvirtMachineProviderConfig
+          domainVcpu: 8
+          networkInterfaceName: ocp-bnkgh
+          volume:
+            baseVolumeID: ocp-bnkgh-base
+            poolName: ocp-bnkgh
+            volumeName: ''
+            volumeSize: 134217728000
+          apiVersion: libvirtproviderconfig.openshift.io/v1beta1
+          networkInterfaceHostname: ''

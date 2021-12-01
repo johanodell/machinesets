@@ -1,0 +1,50 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+  name: ocp-bnkgh-bouvier
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+      machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-bouvier
+  template:
+    metadata:
+      labels:
+        ingresscontroller: bouvier
+        house: bouvier
+        machine.openshift.io/cluster-api-cluster: ocp-bnkgh
+        machine.openshift.io/cluster-api-machine-role: bouvier-worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: ocp-bnkgh-worker-bouvier
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/bouvier-worker: ''
+      taints:
+      - key: node-role.kkubernetes.io/bouvier-worker
+        effect: NoSchedule
+      providerSpec:
+        value:
+          cloudInit: null
+          domainMemory: 8192
+          networkInterfaceAddress: 192.168.126.0/24
+          networkUUID: ''
+          uri: 'qemu+tcp://192.168.1.20/system'
+          ignition:
+            userDataSecret: worker-user-data
+          ignKey: ''
+          autostart: false
+          kind: LibvirtMachineProviderConfig
+          domainVcpu: 4
+          networkInterfaceName: ocp-bnkgh
+          volume:
+            baseVolumeID: ocp-bnkgh-base
+            poolName: ocp-bnkgh
+            volumeName: ''
+            volumeSize: 134217728000
+          apiVersion: libvirtproviderconfig.openshift.io/v1beta1
+          networkInterfaceHostname: ''
