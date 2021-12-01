@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ../base
 - ocp-bnkgh-worker-0.yml
-- ocp-bnkgh-infra-bouvier.yml
-- ocp-bnkgh-infra-simpson.yml
-- ocp-bnkgh-worker-bouvier.yml
-- ocp-bnkgh-worker-simpson.yml
+#- ocp-bnkgh-infra-bouvier.yml
+#- ocp-bnkgh-infra-simpson.yml
+#- ocp-bnkgh-worker-bouvier.yml
+#- ocp-bnkgh-worker-simpson.yml
