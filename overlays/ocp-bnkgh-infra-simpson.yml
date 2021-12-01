@@ -19,7 +19,7 @@ spec:
         house: simpson
         machine.openshift.io/cluster-api-cluster: ocp-bnkgh
         machine.openshift.io/cluster-api-machine-role: simpson-infra
-        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machine-type: infra
         machine.openshift.io/cluster-api-machineset: ocp-bnkgh-simpson-infra
     spec:
       metadata: 
