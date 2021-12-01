@@ -1,7 +1,7 @@
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  creationTimestamp: 'null'
+  creationTimestamp: null
   labels:
     machine.openshift.io/cluster-api-cluster: ocp-bnkgh
   name: ocp-bnkgh-worker-0
